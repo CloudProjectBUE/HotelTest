@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  backend:
+    build: ./server
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_CONNECTION_STRING=mongodb+srv://isaacc1572:mYF46Lvat3NaIfwW@hotel.y71ob.mongodb.net/
+    volumes:
+      - ./server/logs:/app/logs  
+      - ./server/data:/app/data
+  frontend:
+    build: Hotel_01\client
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
